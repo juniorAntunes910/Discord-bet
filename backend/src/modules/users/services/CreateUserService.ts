@@ -21,7 +21,7 @@ interface IUserRequest {
     coins?: number,
 }
 
-export class CreateUserService {
+class CreateUserService {
     constructor(){}
 
     async execute( {username, email, password, role, coins}: IUserRequest){
@@ -47,4 +47,6 @@ export class CreateUserService {
         return user
     }
 }
+
+export const createUserService = new CreateUserService();
 

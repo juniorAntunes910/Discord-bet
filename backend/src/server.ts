@@ -3,7 +3,7 @@ import  Express  from 'express'
 import { router } from './router.js'
 const app = Express();
 
-app.use(Express.json); // Assim ele lê json
+app.use(Express.json()); // Assim ele lê json
 
 app.use(router); // Rotas
 
