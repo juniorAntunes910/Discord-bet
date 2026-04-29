@@ -1,0 +1,19 @@
+
+  // Visit https://aka.ms/tsconfig to read more about this file
+{
+  "compilerOptions": {
+    "module": "nodenext",
+    "target": "esnext",
+    "lib": ["esnext"],
+    "types": ["node"], // Garante que o TS reconheça 'process.env'
+    
+    "strict": true,
+    "jsx": "react-jsx",
+    "verbatimModuleSyntax": true,
+    "isolatedModules": true,
+    "esModuleInterop": true, // Adicione isso para compatibilidade de pacotes antigos
+    "skipLibCheck": true,
+    "moduleDetection": "force"
+  }
+}
+
