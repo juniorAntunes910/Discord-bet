@@ -21,5 +21,17 @@ model User {
   coins Float @default(1000.0)
   createdAt DateTime @default(now())
 
+  message Message[]
+
   @@map("users")
+}
+
+
+model Message {
+  id String @id @default(uuid())
+  content String 
+  createdAt DateTime @default(now())
+
+  userID String
+  user User @relation(fields: [userID], references: [id])
 }

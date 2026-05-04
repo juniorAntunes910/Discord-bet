@@ -1,13 +1,10 @@
 import { prisma } from "../../../database/client.js"
 
-interface IUserRequest{
-    id: string;
-}
 
 class DeleteUserService{
-    async execute( {id}: IUserRequest){
+    async execute( id: string){
         const existUser = await prisma.user.findUnique({
-        where: { id}
+        where: { id }
         }
         );
         if(!existUser){
