@@ -1,6 +1,5 @@
 import { type Request, type Response } from "express";
 import { readUserService } from "../services/ReadUserService.js";
-import { prisma } from "../../../database/client.js";
 
      class ReadUserController{
         async handle(req: Request, res: Response){

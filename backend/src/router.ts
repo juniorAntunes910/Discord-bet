@@ -4,6 +4,7 @@ import { readUserController } from "./modules/users/controllers/ReadUserControll
 import { updateUserController } from "./modules/users/controllers/UpdateUserController.js";
 import { deleteUserController } from "./modules/users/controllers/DeleteUserService.js";
 import { createChatController } from "./modules/chat/controllers/CreateChatController.js";
+import { readChatController } from "./modules/chat/controllers/ReadChatController.js";
 const router = Express();
 
 
@@ -15,5 +16,5 @@ router.delete('/users/:id', (req, res) => deleteUserController.handle(req, res))
 
 //Chat
 router.post('/chat', (req, res) => createChatController.handle(req, res));
-
+router.get('/chat', (req, res) => readChatController.handle(req, res));
 export{ router}

@@ -23,7 +23,7 @@ class CreateChatService{
             }
         });
 
-        io.emit("New message", {
+        io.emit("new_message", {
             id: chat.id,
             content: chat.content,
             username: chat.user.username,
