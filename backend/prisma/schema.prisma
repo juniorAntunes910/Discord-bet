@@ -24,6 +24,8 @@ model User {
   message Message[]
 
   @@map("users")
+  positions Position[]
+  orders Order[]
 }
 
 
@@ -34,4 +36,48 @@ model Message {
 
   userID String
   user User @relation(fields: [userID], references: [id])
+}
+
+model Market {
+  id String @id @default(uuid())
+  title String 
+  description String?
+  status String @default("OPEN")
+  resolvedAt DateTime?
+  winnerID String? 
+  outcomes Outcome[]
+  createdAt DateTime @default(now())
+}
+
+model Outcome {
+  id String @id @default(uuid())
+  marketId String 
+  market Market[]
+  name String 
+  price Float
+  position Position[]
+  order Order[]
+}
+
+model Position{
+  id String @id @default(uuid())
+  userId String 
+  user User @relation(fields: [userId], references: [id])
+  outcomeId String
+  outcome Outcome @relation(fields: [outcomeId], references: [id])
+  shares Int 
+  avgPrice Float
+  @@unique([userId, outcomeId])
+}
+
+model Order {
+  id String @id @default(uuid())
+  userId String
+  user User @relation(fields: [userId], references: [id])
+  outcomeId String
+  outcome Outcome @relation(fields: [outcomeId], references: [id])
+  amout Float
+  shares Int
+  type String
+  createdAt DateTime @default(now())
 }
