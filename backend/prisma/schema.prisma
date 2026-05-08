@@ -76,7 +76,7 @@ model Order {
   user User @relation(fields: [userId], references: [id])
   outcomeId String
   outcome Outcome @relation(fields: [outcomeId], references: [id])
-  amout Float
+  amount Float
   shares Int
   type String
   createdAt DateTime @default(now())
