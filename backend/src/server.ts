@@ -2,9 +2,11 @@ import 'dotenv/config'
 import Express from 'express'
 import { createServer } from 'node:http'
 import { Server } from 'socket.io'
+import cors from 'cors';
 
 const app = Express();
 app.use(Express.json());
+app.use(cors());
 
 // 1. Crie o servidor HTTP e o IO PRIMEIRO
 const server = createServer(app);

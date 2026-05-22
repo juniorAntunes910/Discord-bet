@@ -1,11 +1,11 @@
-import  Express  from "express"
+import  Express, { Router }  from "express"
 import { createUserController } from "./modules/users/controllers/CreateUserController.js";
 import { readUserController } from "./modules/users/controllers/ReadUserController.js";
 import { updateUserController } from "./modules/users/controllers/UpdateUserController.js";
 import { deleteUserController } from "./modules/users/controllers/DeleteUserService.js";
 import { createChatController } from "./modules/chat/controllers/CreateChatController.js";
 import { readChatController } from "./modules/chat/controllers/ReadChatController.js";
-const router = Express();
+const router = Router();
 
 
 //User

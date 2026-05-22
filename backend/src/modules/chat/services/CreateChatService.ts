@@ -1,36 +1,29 @@
-import { prisma } from '../../../database/client.js'
-import { io } from '../../../server.js'
+// services/CreateChatService.ts
+import { io } from "../../../server.js";
+import { prisma } from "../../../database/client.js"; 
 
-interface IChatRequest{
-    content: string,
-    userID: string,
+interface CreateChatDTO {
+    content: string;
+    userID: string;
 }
 
-class CreateChatService{ 
-    constructor(){}
-
-    async execute({ content, userID }: IChatRequest){
-
+class CreateChatService {
+    async execute({ content, userID }: CreateChatDTO) {
+        
         const chat = await prisma.message.create({
             data: {
-                content,
-                userID
+                content: content,
+                userID: userID // Relacionamento
             },
-            include:{
-                user: {
-                    select: {username: true}
-                }
+            include: {
+                user: true 
             }
         });
 
-        io.emit("new_message", {
-            id: chat.id,
-            content: chat.content,
-            username: chat.user.username,
-            userID: chat.userID
-        })
+        io.emit("newMessage", chat);
 
         return chat;
     }
 }
+
 export const createChatService = new CreateChatService();
